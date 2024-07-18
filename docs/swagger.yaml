@@ -1,0 +1,1599 @@
+basePath: /
+definitions:
+  genproto.AddCommentRequest:
+    properties:
+      content:
+        type: string
+      id:
+        type: string
+      memory_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  genproto.AddCommentResponse:
+    type: object
+  genproto.AddCustomEventRequest:
+    properties:
+      category:
+        type: string
+      date:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+      user_id:
+        type: string
+    type: object
+  genproto.AddCustomEventResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  genproto.AddHistoricalEventRequest:
+    properties:
+      category:
+        type: string
+      date:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      source_url:
+        type: string
+      time:
+        type: string
+      title:
+        type: string
+    type: object
+  genproto.AddHistoricalEventResponse:
+    type: object
+  genproto.AddMediaRequest:
+    properties:
+      media_id:
+        type: string
+      memory_id:
+        type: string
+      type:
+        type: string
+      url:
+        type: string
+    type: object
+  genproto.AddMediaResponse:
+    type: object
+  genproto.AddMemoryRequest:
+    properties:
+      date:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      latitude:
+        type: number
+      longitude:
+        type: number
+      place_name:
+        type: string
+      privacy:
+        type: string
+      tags:
+        items:
+          type: string
+        type: array
+      title:
+        type: string
+      user_id:
+        type: string
+    type: object
+  genproto.AddMemoryResponse:
+    type: object
+  genproto.AddMilestonesRequest:
+    properties:
+      category:
+        type: string
+      date:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+      user_id:
+        type: string
+    type: object
+  genproto.AddMilestonesResponse:
+    type: object
+  genproto.AddTimeLineRequest:
+    properties:
+      events:
+        $ref: '#/definitions/genproto.Events'
+      id:
+        type: string
+      last_updated:
+        type: string
+      user_id:
+        type: string
+    type: object
+  genproto.AddTimeLineResponse:
+    type: object
+  genproto.ByMemoryId:
+    properties:
+      content:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  genproto.Comment:
+    properties:
+      content:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      memory_id:
+        type: string
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+  genproto.CustomEvents:
+    properties:
+      category:
+        type: string
+      created_at:
+        type: string
+      date:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+      user_id:
+        type: string
+    type: object
+  genproto.DeleteCommentResponse:
+    type: object
+  genproto.DeleteCustomEventsResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  genproto.DeleteHistoricalEventResponse:
+    type: object
+  genproto.DeleteMediaRequest:
+    properties:
+      media_id:
+        type: string
+      memory_id:
+        type: string
+    type: object
+  genproto.DeleteMediaResponse:
+    type: object
+  genproto.DeleteMemoryResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  genproto.DeleteMilestonesResponse:
+    type: object
+  genproto.DeleteTimeLineResponse:
+    type: object
+  genproto.Events:
+    properties:
+      date:
+        type: string
+      id:
+        type: string
+      preview:
+        type: string
+      title:
+        type: string
+      type:
+        type: string
+    type: object
+  genproto.GetAllEventsResponse:
+    properties:
+      event:
+        items:
+          $ref: '#/definitions/genproto.CustomEvents'
+        type: array
+    type: object
+  genproto.GetAllHistoricalResponse:
+    properties:
+      event:
+        items:
+          $ref: '#/definitions/genproto.HistoricalEvents'
+        type: array
+    type: object
+  genproto.GetAllMediaResponse:
+    properties:
+      media:
+        items:
+          $ref: '#/definitions/genproto.Media'
+        type: array
+    type: object
+  genproto.GetAllMemoriesResponse:
+    properties:
+      memories:
+        items:
+          $ref: '#/definitions/genproto.Memory'
+        type: array
+    type: object
+  genproto.GetAllMilestonesResponse:
+    properties:
+      milestone:
+        items:
+          $ref: '#/definitions/genproto.Milestones'
+        type: array
+    type: object
+  genproto.GetByCommentIdResponse:
+    properties:
+      comment:
+        $ref: '#/definitions/genproto.Comment'
+    type: object
+  genproto.GetByIdEvetsResponse:
+    properties:
+      event:
+        $ref: '#/definitions/genproto.CustomEvents'
+    type: object
+  genproto.GetByIdMemoryResponse:
+    properties:
+      comments:
+        items:
+          $ref: '#/definitions/genproto.ByMemoryId'
+        type: array
+    type: object
+  genproto.GetCommentsResponse:
+    properties:
+      comment:
+        items:
+          $ref: '#/definitions/genproto.Comment'
+        type: array
+    type: object
+  genproto.GetMediaByMemoryIdResponse:
+    properties:
+      media:
+        items:
+          $ref: '#/definitions/genproto.Media'
+        type: array
+    type: object
+  genproto.GetMemoryResponse:
+    properties:
+      memory:
+        $ref: '#/definitions/genproto.Memory'
+    type: object
+  genproto.GetUserEventsResponse:
+    properties:
+      events:
+        items:
+          $ref: '#/definitions/genproto.Events'
+        type: array
+    type: object
+  genproto.HistoricalEvents:
+    properties:
+      category:
+        type: string
+      date:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      source_url:
+        type: string
+      time:
+        type: string
+      title:
+        type: string
+    type: object
+  genproto.Media:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: string
+      memory_id:
+        type: string
+      type:
+        type: string
+      url:
+        type: string
+    type: object
+  genproto.Memory:
+    properties:
+      created_at:
+        type: string
+      date:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      latitude:
+        type: number
+      longitude:
+        type: number
+      place_name:
+        type: string
+      privacy:
+        type: string
+      tags:
+        items:
+          type: string
+        type: array
+      title:
+        type: string
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+  genproto.Milestones:
+    properties:
+      category:
+        type: string
+      created_at:
+        type: string
+      date:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+  genproto.SearchTimeLineResponse:
+    properties:
+      event:
+        items:
+          $ref: '#/definitions/genproto.Events'
+        type: array
+    type: object
+  genproto.ShareMemoryRequest:
+    properties:
+      memory_id:
+        type: string
+      shared_with:
+        items:
+          type: string
+        type: array
+    type: object
+  genproto.ShareMemoryResponse:
+    type: object
+  genproto.UpdateCommentRequest:
+    properties:
+      content:
+        type: string
+      id:
+        type: string
+      memory_id:
+        type: string
+    type: object
+  genproto.UpdateCommentResponse:
+    type: object
+  genproto.UpdateCustomEventsRequest:
+    properties:
+      description:
+        type: string
+      event_id:
+        type: string
+      title:
+        type: string
+    type: object
+  genproto.UpdateCustomEventsResponse:
+    type: object
+  genproto.UpdateMediaRequest:
+    properties:
+      id:
+        type: string
+      memory_id:
+        type: string
+      type:
+        type: string
+      url:
+        type: string
+    type: object
+  genproto.UpdateMediaResponse:
+    type: object
+  genproto.UpdateMemoryRequest:
+    properties:
+      id:
+        type: string
+      tags:
+        items:
+          type: string
+        type: array
+      title:
+        type: string
+    type: object
+  genproto.UpdateMemoryResponse:
+    type: object
+  genproto.UpdateMilestonesRequest:
+    properties:
+      date:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+    type: object
+  genproto.UpdateMilestonesResponse:
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: API documentation for Time Capsule services
+  title: API Gateway
+  version: "1.0"
+paths:
+  /comment/add:
+    post:
+      consumes:
+      - application/json
+      description: Add a new comment with provided details
+      parameters:
+      - description: Add comment request
+        in: body
+        name: AddComment
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.AddCommentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Comment successfully added
+          schema:
+            $ref: '#/definitions/genproto.AddCommentResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Add a new comment
+      tags:
+      - Comment
+  /comment/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a comment based on the provided ID
+      parameters:
+      - description: Comment ID
+        in: path
+        name: CommentID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Comment successfully deleted
+          schema:
+            $ref: '#/definitions/genproto.DeleteCommentResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Delete a comment
+      tags:
+      - Comment
+  /comment/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a comment entry based on the provided ID
+      parameters:
+      - description: Comment ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Comment found
+          schema:
+            $ref: '#/definitions/genproto.GetByCommentIdResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "404":
+          description: Comment not found
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get a comment by ID
+      tags:
+      - Comment
+  /comment/get/memory/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves comments associated with a specific memory ID
+      parameters:
+      - description: Memory ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Comments found
+          schema:
+            $ref: '#/definitions/genproto.GetByIdMemoryResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "404":
+          description: Comments not found
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get comments by memory ID
+      tags:
+      - Comment
+  /comment/gets:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves all stored comments
+      parameters:
+      - description: User ID
+        in: query
+        name: UserID
+        type: string
+      - description: Limit
+        in: query
+        name: Limit
+        type: string
+      - description: Offset
+        in: query
+        name: Offset
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of comments
+          schema:
+            $ref: '#/definitions/genproto.GetCommentsResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all comments
+      tags:
+      - Comment
+  /comment/update:
+    put:
+      consumes:
+      - application/json
+      description: Updates an existing comment with new content
+      parameters:
+      - description: Update comment request
+        in: body
+        name: UpdateComment
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.UpdateCommentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Comment successfully updated
+          schema:
+            $ref: '#/definitions/genproto.UpdateCommentResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Update a comment
+      tags:
+      - Comment
+  /customevent/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a custom event based on the provided ID
+      parameters:
+      - description: Custom event ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Custom event successfully deleted
+          schema:
+            $ref: '#/definitions/genproto.DeleteCustomEventsResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "404":
+          description: Custom event not found
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      - BearerAuth: []
+      summary: Delete a custom event
+      tags:
+      - CustomEvents
+  /customevent/add:
+    post:
+      consumes:
+      - application/json
+      description: Add a new custom event with provided details
+      parameters:
+      - description: Add custom event request
+        in: body
+        name: AddCustomEvent
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.AddCustomEventRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Custom event successfully added
+          schema:
+            $ref: '#/definitions/genproto.AddCustomEventResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Add a new custom event
+      tags:
+      - CustomEvents
+  /customevent/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a custom event based on the provided ID
+      parameters:
+      - description: Custom event ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Custom event found
+          schema:
+            $ref: '#/definitions/genproto.GetByIdEvetsResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "404":
+          description: Custom event not found
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get a custom event by ID
+      tags:
+      - CustomEvents
+  /customevent/gets:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all custom events based on provided filters
+      parameters:
+      - description: User ID filter
+        in: query
+        name: user_id
+        type: string
+      - description: Date filter
+        in: query
+        name: date
+        type: string
+      - description: Title filter
+        in: query
+        name: title
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Custom events found
+          schema:
+            $ref: '#/definitions/genproto.GetAllEventsResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all custom events
+      tags:
+      - CustomEvents
+  /customevent/update:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing custom event based on provided details
+      parameters:
+      - description: Update custom event request
+        in: body
+        name: UpdateCustomEvent
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.UpdateCustomEventsRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Custom event successfully updated
+          schema:
+            $ref: '#/definitions/genproto.UpdateCustomEventsResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "404":
+          description: Custom event not found
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Update a custom event
+      tags:
+      - CustomEvents
+  /historical/add:
+    post:
+      consumes:
+      - application/json
+      description: Add a new historical event with provided details
+      parameters:
+      - description: Add historical event request
+        in: body
+        name: AddHistoricalEvent
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.AddHistoricalEventRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Historical event successfully added
+          schema:
+            $ref: '#/definitions/genproto.AddHistoricalEventResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Add a new historical event
+      tags:
+      - HistoricalEvents
+  /historical/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a historical event based on the provided ID
+      parameters:
+      - description: Historical event ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Historical event successfully deleted
+          schema:
+            $ref: '#/definitions/genproto.DeleteHistoricalEventResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "404":
+          description: Historical event not found
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Delete a historical event
+      tags:
+      - HistoricalEvents
+  /historical/gets:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all historical events based on provided filters
+      parameters:
+      - description: Limit number of events
+        in: query
+        name: limit
+        type: string
+      - description: Offset for pagination
+        in: query
+        name: offset
+        type: string
+      - description: Date filter
+        in: query
+        name: date
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Historical events found
+          schema:
+            $ref: '#/definitions/genproto.GetAllHistoricalResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all historical events
+      tags:
+      - HistoricalEvents
+  /media/add:
+    post:
+      consumes:
+      - application/json
+      description: Add media to a specific memory
+      parameters:
+      - description: Add media request
+        in: body
+        name: AddMedia
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.AddMediaRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Media successfully added
+          schema:
+            $ref: '#/definitions/genproto.AddMediaResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Add new media
+      tags:
+      - Media
+  /media/delete/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Delete media by memory ID and media ID
+      parameters:
+      - description: Delete media request
+        in: body
+        name: DeleteMedia
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.DeleteMediaRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Media deleted successfully
+          schema:
+            $ref: '#/definitions/genproto.DeleteMediaResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Delete media
+      tags:
+      - Media
+  /media/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all media related to a specific memory ID
+      parameters:
+      - description: Get media by memory ID request
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Media retrieved successfully
+          schema:
+            $ref: '#/definitions/genproto.GetMediaByMemoryIdResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get media by memory ID
+      tags:
+      - Media
+  /media/gets:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all media, optionally filtered by type and URL
+      parameters:
+      - description: Type
+        in: query
+        name: type
+        type: string
+      - description: URL
+        in: query
+        name: url
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Media retrieved successfully
+          schema:
+            $ref: '#/definitions/genproto.GetAllMediaResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all media
+      tags:
+      - Media
+  /media/update:
+    put:
+      consumes:
+      - application/json
+      description: Update media details such as type and URL
+      parameters:
+      - description: Update media request
+        in: body
+        name: UpdateMedia
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.UpdateMediaRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Media updated successfully
+          schema:
+            $ref: '#/definitions/genproto.UpdateMediaResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Update media
+      tags:
+      - Media
+  /memory/add:
+    post:
+      consumes:
+      - application/json
+      description: Add a new memory with provided details
+      parameters:
+      - description: Add memory request
+        in: body
+        name: AddMemory
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.AddMemoryRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Memory successfully added
+          schema:
+            $ref: '#/definitions/genproto.AddMemoryResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Add a new memory
+      tags:
+      - Memory
+  /memory/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a memory based on the provided ID
+      parameters:
+      - description: Memory ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Memory successfully deleted
+          schema:
+            $ref: '#/definitions/genproto.DeleteMemoryResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "404":
+          description: Memory not found
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Delete a memory
+      tags:
+      - Memory
+  /memory/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve a memory based on the provided ID
+      parameters:
+      - description: Memory ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Memory found
+          schema:
+            $ref: '#/definitions/genproto.GetMemoryResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "404":
+          description: Memory not found
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get a memory by ID
+      tags:
+      - Memory
+  /memory/gets:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all memories based on provided filters
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        type: string
+      - description: Number of items per page
+        in: query
+        name: limit
+        type: string
+      - description: Start date filter
+        in: query
+        name: start_date
+        type: string
+      - description: End date filter
+        in: query
+        name: end_date
+        type: string
+      - description: Tags filter
+        in: query
+        name: tags
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Memories found
+          schema:
+            $ref: '#/definitions/genproto.GetAllMemoriesResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all memories
+      tags:
+      - Memory
+  /memory/share:
+    post:
+      consumes:
+      - application/json
+      description: Share a memory with specified users
+      parameters:
+      - description: Share memory request
+        in: body
+        name: ShareMemory
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.ShareMemoryRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Memory successfully shared
+          schema:
+            $ref: '#/definitions/genproto.ShareMemoryResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "404":
+          description: Memory not found
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Share a memory
+      tags:
+      - Memory
+  /memory/update:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing memory based on provided details
+      parameters:
+      - description: Update memory request
+        in: body
+        name: UpdateMemory
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.UpdateMemoryRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Memory successfully updated
+          schema:
+            $ref: '#/definitions/genproto.UpdateMemoryResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "404":
+          description: Memory not found
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Update a memory
+      tags:
+      - Memory
+  /milestone/add:
+    post:
+      consumes:
+      - application/json
+      description: Add a new milestone with provided details
+      parameters:
+      - description: Add milestone request
+        in: body
+        name: AddMilestone
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.AddMilestonesRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Milestone successfully added
+          schema:
+            $ref: '#/definitions/genproto.AddMilestonesResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Add a new milestone
+      tags:
+      - Milestones
+  /milestone/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a milestone based on the provided ID
+      parameters:
+      - description: Milestone ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Milestone successfully deleted
+          schema:
+            $ref: '#/definitions/genproto.DeleteMilestonesResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "404":
+          description: Milestone not found
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Delete a milestone
+      tags:
+      - Milestones
+  /milestone/gets:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve all milestones based on provided filters
+      parameters:
+      - description: Date filter
+        in: query
+        name: date
+        type: string
+      - description: Title filter
+        in: query
+        name: title
+        type: string
+      - description: Category filter
+        in: query
+        name: category
+        type: string
+      - description: User ID filter
+        in: query
+        name: user_id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Milestones found
+          schema:
+            $ref: '#/definitions/genproto.GetAllMilestonesResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all milestones
+      tags:
+      - Milestones
+  /milestone/update:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing milestone based on provided details
+      parameters:
+      - description: Update milestone request
+        in: body
+        name: UpdateMilestone
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.UpdateMilestonesRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Milestone successfully updated
+          schema:
+            $ref: '#/definitions/genproto.UpdateMilestonesResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "404":
+          description: Milestone not found
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Update a milestone
+      tags:
+      - Milestones
+  /timeline/add:
+    post:
+      consumes:
+      - application/json
+      description: Add a new timeline entry with provided details
+      parameters:
+      - description: Add timeline request
+        in: body
+        name: AddTimeLine
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.AddTimeLineRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Timeline entry successfully added
+          schema:
+            $ref: '#/definitions/genproto.AddTimeLineResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Add a new timeline entry
+      tags:
+      - Timeline
+  /timeline/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a timeline entry based on the provided ID
+      parameters:
+      - description: Timeline entry ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Timeline entry successfully deleted
+          schema:
+            $ref: '#/definitions/genproto.DeleteTimeLineResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "404":
+          description: Timeline entry not found
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Delete a timeline entry
+      tags:
+      - Timeline
+  /timeline/gets:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve user events based on provided filters
+      parameters:
+      - description: Limit number of events
+        in: query
+        name: limit
+        type: string
+      - description: Offset for pagination
+        in: query
+        name: offset
+        type: string
+      - description: Date filter
+        in: query
+        name: date
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User events found
+          schema:
+            $ref: '#/definitions/genproto.GetUserEventsResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get user events
+      tags:
+      - Timeline
+  /timeline/search:
+    get:
+      consumes:
+      - application/json
+      description: Search timeline events within a specified date range
+      parameters:
+      - description: Start date of search
+        in: query
+        name: start_date
+        type: string
+      - description: End date of search
+        in: query
+        name: end_date
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Timeline events found
+          schema:
+            $ref: '#/definitions/genproto.SearchTimeLineResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Search timeline events
+      tags:
+      - Timeline
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
