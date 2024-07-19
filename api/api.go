@@ -2,7 +2,6 @@ package api
 
 import (
 	"github.com/Exam4/4th-month-exam-Api-Gateway/api/handler"
-	middleware "github.com/Exam4/4th-month-exam-Api-Gateway/api/midlleware"
 	"github.com/gin-gonic/gin"
 
 	swaggerFiles "github.com/swaggo/files"
@@ -24,7 +23,7 @@ func NewGin(h *handler.Handler) *gin.Engine {
 	
 
 	r.GET("/api/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	router.Use(middleware.MiddleWare())
+	// router.Use(middleware.MiddleWare())
 	media := router.Group("/media")
 	{
 		media.POST("/add", h.AddMedia)

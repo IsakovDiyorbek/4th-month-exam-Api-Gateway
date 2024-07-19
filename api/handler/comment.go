@@ -26,6 +26,19 @@ func (h *Handler) AddComment(ctx *gin.Context) {
 		ctx.JSON(400, gin.H{"error": "Invalid input"})
 		return
 	}
+
+	res, err := h.MemoryService.GetMemory(ctx, &pb.GetMemoryRequest{Id: req.MemoryId})
+	if err != nil {
+		ctx.JSON(500, gin.H{"error": "Internal server error"})
+		slog.Info(err.Error())
+		return
+	}
+	
+	if res == nil  {
+		ctx.JSON(404, gin.H{"error": "Memory not found"})
+		return
+	}
+
 	_, err = h.CommentService.AddComment(ctx, req)
 	if err != nil {
 		ctx.JSON(500, gin.H{"error": "Internal server error"})
@@ -35,6 +48,7 @@ func (h *Handler) AddComment(ctx *gin.Context) {
 
 	ctx.JSON(200, "Success create comment")
 }
+
 
 // GetByMemoryId handles fetching comments by memory ID.
 // @Summary Get comments by memory ID
@@ -80,6 +94,18 @@ func (h *Handler) UpdateComment(ctx *gin.Context) {
 	err := ctx.BindJSON(&req)
 	if err != nil {
 		ctx.JSON(400, gin.H{"error": "Invalid input"})
+		return
+	}
+	
+	res, err := h.MemoryService.GetMemory(ctx, &pb.GetMemoryRequest{Id: req.MemoryId})
+	if err != nil {
+		ctx.JSON(500, gin.H{"error": "Internal server error"})
+		slog.Info(err.Error())
+		return
+	}
+	
+	if res == nil  {
+		ctx.JSON(404, gin.H{"error": "Memory not found"})
 		return
 	}
 	_, err = h.CommentService.UpdateComment(ctx, req)
@@ -165,6 +191,7 @@ func (h *Handler) GetAllComments(ctx *gin.Context) {
 		Ofset:  ctx.Query("Offset"),
 	}
 
+	
 	res, err := h.CommentService.GetAllCommets(ctx, req)
 	if err != nil {
 		ctx.JSON(500, gin.H{"error": "Internal server error"})

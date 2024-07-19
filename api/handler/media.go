@@ -26,7 +26,18 @@ func (h *Handler) AddMedia(ctx *gin.Context) {
 		return
 	}
 
-	_, err := h.MediaService.AddMedia(ctx.Request.Context(), req)
+	res, err := h.MemoryService.GetMemory(ctx, &pb.GetMemoryRequest{Id: req.MemoryId})
+	if err != nil {
+		ctx.JSON(500, gin.H{"error": "Internal server error"})
+		slog.Info(err.Error())
+		return
+	}
+	
+	if res == nil  {
+		ctx.JSON(404, gin.H{"error": "Memory not found"})
+		return
+	}
+	_, err = h.MediaService.AddMedia(ctx.Request.Context(), req)
 	if err != nil {
 		ctx.JSON(500, gin.H{"error": "Internal server error"})
 		slog.Error(err.Error())
@@ -108,8 +119,18 @@ func (h *Handler) UpdateMedia(ctx *gin.Context) {
 		ctx.JSON(400, gin.H{"error": "Invalid input"})
 		return
 	}
-
-	_, err := h.MediaService.UpdateMedia(ctx.Request.Context(), req)
+	res, err := h.MemoryService.GetMemory(ctx, &pb.GetMemoryRequest{Id: req.MemoryId})
+	if err != nil {
+		ctx.JSON(500, gin.H{"error": "Internal server error"})
+		slog.Info(err.Error())
+		return
+	}
+	
+	if res == nil  {
+		ctx.JSON(404, gin.H{"error": "Memory not found"})
+		return
+	}
+	_, err = h.MediaService.UpdateMedia(ctx.Request.Context(), req)
 	if err != nil {
 		ctx.JSON(500, gin.H{"error": "Internal server error"})
 		slog.Error(err.Error())
