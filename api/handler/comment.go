@@ -125,7 +125,7 @@ func (h *Handler) UpdateComment(ctx *gin.Context) {
 // @Accept json
 // @Produce json
 // @Security BearerAuth
-// @Param CommentID path string true "Comment ID"
+// @Param id path string true "Comment ID"
 // @Success 200 {object} pb.DeleteCommentResponse "Comment successfully deleted"
 // @Failure 400 {string} string "Invalid input"
 // @Failure 500 {string} string "Internal server error"

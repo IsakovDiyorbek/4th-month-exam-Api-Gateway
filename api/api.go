@@ -20,7 +20,6 @@ func NewGin(h *handler.Handler) *gin.Engine {
 	r := gin.Default()
 
 	router := r.Group("/")
-	
 
 	r.GET("/api/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	// router.Use(middleware.MiddleWare())
@@ -70,9 +69,9 @@ func NewGin(h *handler.Handler) *gin.Engine {
 	timeline := router.Group("/timeline")
 	{
 		timeline.POST("/add", h.AddTimeLine)
-		timeline.GET("/gets", h.GetEvents)			// Id si qaytyapti
-		timeline.GET("/search", h.SearchTimeLine)			// bosh qaytyapti
-		timeline.DELETE("/delete/:id", h.DeleteTimeLine) 
+		timeline.GET("/gets", h.GetEvents)
+		timeline.GET("/search", h.SearchTimeLine)
+		timeline.DELETE("/delete/:id", h.DeleteTimeLine)
 	}
 
 	comment := router.Group("/comment")

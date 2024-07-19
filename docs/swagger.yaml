@@ -52,17 +52,6 @@ definitions:
     type: object
   genproto.AddHistoricalEventResponse:
     type: object
-  genproto.AddMediaRequest:
-    properties:
-      media_id:
-        type: string
-      memory_id:
-        type: string
-      type:
-        type: string
-      url:
-        type: string
-    type: object
   genproto.AddMediaResponse:
     type: object
   genproto.AddMemoryRequest:
@@ -434,6 +423,15 @@ definitions:
     type: object
   genproto.UpdateMilestonesResponse:
     type: object
+  models.MediaReq:
+    properties:
+      memory_id:
+        type: string
+      type:
+        type: string
+      url:
+        type: string
+    type: object
 host: localhost:8080
 info:
   contact: {}
@@ -481,7 +479,7 @@ paths:
       parameters:
       - description: Comment ID
         in: path
-        name: CommentID
+        name: id
         required: true
         type: string
       produces:
@@ -644,7 +642,39 @@ paths:
       summary: Update a comment
       tags:
       - Comment
-  /customevent/{id}:
+  /customevent/add:
+    post:
+      consumes:
+      - application/json
+      description: Add a new custom event with provided details
+      parameters:
+      - description: Add custom event request
+        in: body
+        name: AddCustomEvent
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.AddCustomEventRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Custom event successfully added
+          schema:
+            $ref: '#/definitions/genproto.AddCustomEventResponse'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Add a new custom event
+      tags:
+      - CustomEvents
+  /customevent/delete/{id}:
     delete:
       consumes:
       - application/json
@@ -678,38 +708,6 @@ paths:
       - BearerAuth: []
       - BearerAuth: []
       summary: Delete a custom event
-      tags:
-      - CustomEvents
-  /customevent/add:
-    post:
-      consumes:
-      - application/json
-      description: Add a new custom event with provided details
-      parameters:
-      - description: Add custom event request
-        in: body
-        name: AddCustomEvent
-        required: true
-        schema:
-          $ref: '#/definitions/genproto.AddCustomEventRequest'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: Custom event successfully added
-          schema:
-            $ref: '#/definitions/genproto.AddCustomEventResponse'
-        "400":
-          description: Invalid input
-          schema:
-            type: string
-        "500":
-          description: Internal server error
-          schema:
-            type: string
-      security:
-      - BearerAuth: []
-      summary: Add a new custom event
       tags:
       - CustomEvents
   /customevent/get/{id}:
@@ -937,7 +935,7 @@ paths:
         name: AddMedia
         required: true
         schema:
-          $ref: '#/definitions/genproto.AddMediaRequest'
+          $ref: '#/definitions/models.MediaReq'
       produces:
       - application/json
       responses:

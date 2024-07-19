@@ -2,6 +2,8 @@ package handler
 
 import (
 	"log/slog"
+
+	"github.com/Exam4/4th-month-exam-Api-Gateway/api/handler/models"
 	pb "github.com/Exam4/4th-month-exam-Api-Gateway/genproto"
 
 	"github.com/gin-gonic/gin"
@@ -14,13 +16,13 @@ import (
 // @Accept json
 // @Produce json
 // @Security BearerAuth
-// @Param AddMedia body pb.AddMediaRequest true "Add media request"
+// @Param AddMedia body models.MediaReq true "Add media request"
 // @Success 200 {object} pb.AddMediaResponse "Media successfully added"
 // @Failure 400 {string} string "Invalid input"
 // @Failure 500 {string} string "Internal server error"
 // @Router /media/add [post]
 func (h *Handler) AddMedia(ctx *gin.Context) {
-	req := &pb.AddMediaRequest{}
+	req := models.MediaReq{}
 	if err := ctx.BindJSON(req); err != nil {
 		ctx.JSON(400, gin.H{"error": "Invalid input"})
 		return
@@ -32,12 +34,17 @@ func (h *Handler) AddMedia(ctx *gin.Context) {
 		slog.Info(err.Error())
 		return
 	}
-	
-	if res == nil  {
+
+	if res == nil {
 		ctx.JSON(404, gin.H{"error": "Memory not found"})
 		return
 	}
-	_, err = h.MediaService.AddMedia(ctx.Request.Context(), req)
+	_, err = h.MediaService.AddMedia(ctx.Request.Context(), &pb.AddMediaRequest{
+		MediaId:  req.Id,
+		MemoryId: req.MemoryId,
+		Type:     req.Type,
+		Url:      req.Url,
+	})
 	if err != nil {
 		ctx.JSON(500, gin.H{"error": "Internal server error"})
 		slog.Error(err.Error())
@@ -125,8 +132,8 @@ func (h *Handler) UpdateMedia(ctx *gin.Context) {
 		slog.Info(err.Error())
 		return
 	}
-	
-	if res == nil  {
+
+	if res == nil {
 		ctx.JSON(404, gin.H{"error": "Memory not found"})
 		return
 	}

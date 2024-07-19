@@ -6,19 +6,19 @@ import (
 
 	"github.com/Exam4/4th-month-exam-Api-Gateway/api"
 	"github.com/Exam4/4th-month-exam-Api-Gateway/api/handler"
+	_ "github.com/Exam4/4th-month-exam-Api-Gateway/docs"
 	pb "github.com/Exam4/4th-month-exam-Api-Gateway/genproto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	_ "github.com/Exam4/4th-month-exam-Api-Gateway/docs"
 )
 
 func main() {
-	MemoryConn, err := grpc.NewClient(fmt.Sprintf("localhost%s", ":7777"), grpc.WithTransportCredentials(insecure.NewCredentials()))
+	MemoryConn, err := grpc.NewClient(fmt.Sprintf("memory%s", ":7777"), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatal("Error while NEwclient: ", err.Error())
 	}
 	defer MemoryConn.Close()
-	TimeLineConn, err := grpc.NewClient(fmt.Sprintf("localhost%s", ":8888"), grpc.WithTransportCredentials(insecure.NewCredentials()))
+	TimeLineConn, err := grpc.NewClient(fmt.Sprintf("timeline%s", ":8888"), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatal("Error while NEwclient: ", err.Error())
 	}

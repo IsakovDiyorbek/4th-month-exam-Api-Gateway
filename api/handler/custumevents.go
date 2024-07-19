@@ -83,7 +83,7 @@ func (h *Handler) UpdateCustomEvent(ctx *gin.Context) {
 // @Failure 400 {string} string "Invalid input"
 // @Failure 404 {string} string "Custom event not found"
 // @Failure 500 {string} string "Internal server error"
-// @Router /customevent/{id} [delete]
+// @Router /customevent/delete/{id} [delete]
 func (h *Handler) DeleteCustomEvent(ctx *gin.Context) {
 	id := ctx.Param("id")
 	req := &pb.DeleteCustomEventsRequest{EventId: id}

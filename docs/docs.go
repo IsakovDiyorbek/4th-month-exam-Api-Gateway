@@ -88,7 +88,7 @@ const docTemplate = `{
                     {
                         "type": "string",
                         "description": "Comment ID",
-                        "name": "CommentID",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     }
@@ -387,6 +387,64 @@ const docTemplate = `{
                 }
             }
         },
+        "/customevent/delete/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    },
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Delete a custom event based on the provided ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "CustomEvents"
+                ],
+                "summary": "Delete a custom event",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Custom event ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Custom event successfully deleted",
+                        "schema": {
+                            "$ref": "#/definitions/genproto.DeleteCustomEventsResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Custom event not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/customevent/get/{id}": {
             "get": {
                 "security": [
@@ -536,64 +594,6 @@ const docTemplate = `{
                         "description": "Custom event successfully updated",
                         "schema": {
                             "$ref": "#/definitions/genproto.UpdateCustomEventsResponse"
-                        }
-                    },
-                    "400": {
-                        "description": "Invalid input",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "404": {
-                        "description": "Custom event not found",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal server error",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/customevent/{id}": {
-            "delete": {
-                "security": [
-                    {
-                        "BearerAuth": []
-                    },
-                    {
-                        "BearerAuth": []
-                    }
-                ],
-                "description": "Delete a custom event based on the provided ID",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "CustomEvents"
-                ],
-                "summary": "Delete a custom event",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Custom event ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Custom event successfully deleted",
-                        "schema": {
-                            "$ref": "#/definitions/genproto.DeleteCustomEventsResponse"
                         }
                     },
                     "400": {
@@ -808,7 +808,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/genproto.AddMediaRequest"
+                            "$ref": "#/definitions/models.MediaReq"
                         }
                     }
                 ],
@@ -1917,23 +1917,6 @@ const docTemplate = `{
         "genproto.AddHistoricalEventResponse": {
             "type": "object"
         },
-        "genproto.AddMediaRequest": {
-            "type": "object",
-            "properties": {
-                "media_id": {
-                    "type": "string"
-                },
-                "memory_id": {
-                    "type": "string"
-                },
-                "type": {
-                    "type": "string"
-                },
-                "url": {
-                    "type": "string"
-                }
-            }
-        },
         "genproto.AddMediaResponse": {
             "type": "object"
         },
@@ -2506,6 +2489,20 @@ const docTemplate = `{
         },
         "genproto.UpdateMilestonesResponse": {
             "type": "object"
+        },
+        "models.MediaReq": {
+            "type": "object",
+            "properties": {
+                "memory_id": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
         }
     },
     "securityDefinitions": {
